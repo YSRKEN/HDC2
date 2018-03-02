@@ -1,21 +1,26 @@
 using System;
-using System.Collections.Generic;
 using Eto.Forms;
-using Eto.Drawing;
 using Eto.Serialization.Xaml;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
 namespace HDC2
 {	
 	public class MainForm : Form
-	{	
-		public MainForm()
-		{
+	{
+		public MainForm() {
 			XamlReader.Load(this);
+			// ViewModelを登録する
+			var model = new MainModel();
+			DataContext = model;
 		}
 
 		protected void HandleClickMe(object sender, EventArgs e)
 		{
-			MessageBox.Show("I was clicked!");
+			// メニュー(ButtonMenuItem)のCommandプロパティに「"{Binding ClickMeCommand}"」と
+			// 設定しても動かなかったので、コードビハインドに見せかけてDataContextを直接叩く荒業
+			(DataContext as MainModel).ClickMeCommand.Execute(sender);
 		}
 
 		protected void HandleAbout(object sender, EventArgs e)
@@ -26,6 +31,27 @@ namespace HDC2
 		protected void HandleQuit(object sender, EventArgs e)
 		{
 			Application.Instance.Quit();
+		}
+	}
+
+	public class MainModel : INotifyPropertyChanged
+	{
+		// プロパティ
+		public ICommand ClickMeCommand { get; private set; }
+
+		// 実行するメソッド
+		private void ClickMe(object sender, EventArgs e) {
+			MessageBox.Show("I was clicked!");
+		}
+
+		private void OnPropertyChanged([CallerMemberName] string memberName = null) {
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(memberName));
+		}
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		// コンストラクタ
+		public MainModel() {
+			ClickMeCommand = new Command(ClickMe);
 		}
 	}
 }

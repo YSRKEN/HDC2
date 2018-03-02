@@ -8,6 +8,7 @@
 	>
 	<StackLayout>
 		<Label>Some Content</Label>
+		<Button Text="ClickMe" Command="{Binding ClickMeCommand}"></Button>
 	</StackLayout>
 
 	<Form.Menu>
