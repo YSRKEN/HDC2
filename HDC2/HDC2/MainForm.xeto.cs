@@ -30,7 +30,9 @@ namespace HDC2
 		// バージョン情報メニュー
 		protected void AboutCommand(object sender, EventArgs e)
 		{
-			var dialog = new AboutDialog() { ProgramName = "大破率計算機2", Title = "バージョン情報" };
+			var dialog = new AboutDialog() {
+				ProgramName = "大破率計算機II", Title = "バージョン情報", License = "MIT License",
+				Website = new Uri("https://github.com/YSRKEN/HDC2"), WebsiteLabel = "GitHub" };
 			dialog.ShowDialog(this);
 		}
 	}

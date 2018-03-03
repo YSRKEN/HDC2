@@ -2,7 +2,7 @@
 <Form
 	xmlns="http://schema.picoe.ca/eto.forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	Title="My Eto Form"
+	Title="大破率計算機II"
 	ClientSize="400, 350"
 	Padding="10"
 	>

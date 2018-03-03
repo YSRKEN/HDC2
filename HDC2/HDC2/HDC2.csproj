@@ -13,6 +13,11 @@
     <PackageId>HDC2</PackageId>
     <Authors>HDC2</Authors>
     <Company>HDC2</Company>
+    <NeutralLanguage>ja-JP</NeutralLanguage>
+    <RepositoryUrl>https://github.com/YSRKEN/HDC2</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageLicenseUrl>https://github.com/YSRKEN/HDC2/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/YSRKEN/HDC2</PackageProjectUrl>
   </PropertyGroup>
   
   <ItemGroup>
