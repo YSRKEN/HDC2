@@ -38,6 +38,7 @@ namespace HDC2
 	{
 		// プロパティ
 		public ICommand ClickMeCommand { get; private set; }
+		public string LabelText { get; private set; }
 
 		// 実行するメソッド
 		private void ClickMe(object sender, EventArgs e) {
@@ -52,6 +53,7 @@ namespace HDC2
 		// コンストラクタ
 		public MainModel() {
 			ClickMeCommand = new Command(ClickMe);
+			LabelText = "Some Content";
 		}
 	}
 }
