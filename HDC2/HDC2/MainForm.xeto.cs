@@ -4,6 +4,7 @@ using Eto.Serialization.Xaml;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Reactive.Bindings;
 
 namespace HDC2
 {	
@@ -36,24 +37,24 @@ namespace HDC2
 
 	public class MainModel : INotifyPropertyChanged
 	{
-		// プロパティ
-		public ICommand ClickMeCommand { get; private set; }
-		public string LabelText { get; private set; }
-
-		// 実行するメソッド
-		private void ClickMe(object sender, EventArgs e) {
-			MessageBox.Show("I was clicked!");
-		}
-
 		private void OnPropertyChanged([CallerMemberName] string memberName = null) {
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(memberName));
 		}
 		public event PropertyChangedEventHandler PropertyChanged;
 
+		// プロパティ
+		public ReactiveCommand ClickMeCommand { get; }
+		public ReactiveProperty<string> LabelText { get; } = new ReactiveProperty<string>("Some Content");
+
+		// 実行するメソッド
+		private void ClickMe() {
+			MessageBox.Show("I was clicked!");
+		}
+
 		// コンストラクタ
 		public MainModel() {
-			ClickMeCommand = new Command(ClickMe);
-			LabelText = "Some Content";
+			ClickMeCommand = new ReactiveCommand();
+			ClickMeCommand.Subscribe(ClickMe);
 		}
 	}
 }
