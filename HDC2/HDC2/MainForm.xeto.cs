@@ -10,28 +10,28 @@ namespace HDC2
 {	
 	public class MainForm : Form
 	{
+		// コンストラクタ
 		public MainForm() {
 			XamlReader.Load(this);
+			this.Menu.ApplicationMenu.Text = "ファイル(&F)";
+			this.Menu.HelpMenu.Text = "ヘルプ(&H)";
 			// ViewModelを登録する
 			var model = new MainModel();
 			DataContext = model;
 		}
-
-		protected void HandleClickMe(object sender, EventArgs e)
-		{
-			// メニュー(ButtonMenuItem)のCommandプロパティに「"{Binding ClickMeCommand}"」と
-			// 設定しても動かなかったので、コードビハインドに見せかけてDataContextを直接叩く荒業
-			(DataContext as MainModel).ClickMeCommand.Execute(sender);
+		// 設定メニュー
+		protected void OptionCommand(object sender, EventArgs e) {
+			// スタブ
 		}
-
-		protected void HandleAbout(object sender, EventArgs e)
-		{
-			new AboutDialog().ShowDialog(this);
-		}
-
-		protected void HandleQuit(object sender, EventArgs e)
-		{
+		// 終了メニュー
+		protected void CloseCommand(object sender, EventArgs e) {
 			Application.Instance.Quit();
+		}
+		// バージョン情報メニュー
+		protected void AboutCommand(object sender, EventArgs e)
+		{
+			var dialog = new AboutDialog() { ProgramName = "大破率計算機2", Title = "バージョン情報" };
+			dialog.ShowDialog(this);
 		}
 	}
 

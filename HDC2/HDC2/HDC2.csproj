@@ -5,8 +5,14 @@
     <RootNamespace>HDC2</RootNamespace>
     <PackageVersion>1.0</PackageVersion>
     <Title>HDC2</Title>
-    <Copyright>Copyright © 2018</Copyright>
-    <Description>Description of HDC2</Description>
+    <Copyright>Copyright © 2018 YSR</Copyright>
+    <Description>『艦隊これくしょん ～艦これ～』において、艦娘の最終攻撃力に対する大破率を計算し、
+グラフとして可視化します。パラメーターやグラフデータは別途保存することが可能です。
+</Description>
+    <Product>HDC2</Product>
+    <PackageId>HDC2</PackageId>
+    <Authors>HDC2</Authors>
+    <Company>HDC2</Company>
   </PropertyGroup>
   
   <ItemGroup>
