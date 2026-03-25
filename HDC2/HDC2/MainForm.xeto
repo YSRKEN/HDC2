@@ -3,10 +3,32 @@
 	xmlns="http://schema.picoe.ca/eto.forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	Title="大破率計算機II"
-	ClientSize="400, 350"
 	Padding="10"
 	>
-	<StackLayout>
+	<StackLayout Orientation="Vertical" Spacing="5">
+		<StackLayout Orientation="Horizontal" Spacing="15">
+			<StackLayout Orientation="Vertical" HorizontalContentAlignment="Center" Spacing="5">
+				<Label Text="最大耐久"/>
+				<TextBox Text="{Binding MaxHitPoint.Value}" Width="40" Height="24" />
+			</StackLayout>
+			<StackLayout Orientation="Vertical" HorizontalContentAlignment="Center" Spacing="5">
+				<Label Text="装甲"/>
+				<TextBox Text="{Binding Defense.Value}" Width="40" Height="24" />
+			</StackLayout>
+			<StackLayout Orientation="Vertical" HorizontalContentAlignment="Center" Spacing="5">
+				<Label Text="現在耐久"/>
+				<TextBox Text="{Binding NowHitPoint.Value}" Width="40" Height="24" />
+			</StackLayout>
+			<StackLayout Orientation="Vertical" Spacing="5">
+				<Label Text=""/>
+				<Button Text="追加" Width="40" Height="24"/>
+			</StackLayout>
+			<StackLayout Orientation="Vertical" Spacing="5">
+				<Label Text=""/>
+				<Button Text="削除" Width="40" Height="24"/>
+			</StackLayout>
+		</StackLayout>
+		<ListBox DataStore="{Binding GrafParameterList}" Width="300"/>
 	</StackLayout>
 
 	<Form.Menu>

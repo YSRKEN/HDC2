@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Reactive.Bindings;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace HDC2
 {	
@@ -46,7 +48,10 @@ namespace HDC2
 
 		// プロパティ
 		public ReactiveCommand ClickMeCommand { get; }
-		public ReactiveProperty<string> LabelText { get; } = new ReactiveProperty<string>("Some Content");
+		public ReactiveProperty<int> MaxHitPoint { get; } = new ReactiveProperty<int>(31);
+		public ReactiveProperty<int> Defense { get; } = new ReactiveProperty<int>(59);
+		public ReactiveProperty<int> NowHitPoint { get; } = new ReactiveProperty<int>(31);
+		public ReadOnlyReactiveCollection<string> GrafParameterList { get; }
 
 		// 実行するメソッド
 		private void ClickMe() {
@@ -55,6 +60,13 @@ namespace HDC2
 
 		// コンストラクタ
 		public MainModel() {
+			// の設定
+			{
+				var list = new List<string> { "A", "B", "C" };
+				var oc = new ObservableCollection<string>(list);
+				GrafParameterList = oc.ToReadOnlyReactiveCollection();
+			}
+			// コマンドの設定
 			ClickMeCommand = new ReactiveCommand();
 			ClickMeCommand.Subscribe(ClickMe);
 		}
